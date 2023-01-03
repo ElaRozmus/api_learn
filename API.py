@@ -2,15 +2,21 @@
 
 import requests
 import json
-import pprint
+import webbrowser
 
+from datetime import datetime, timedelta
+# %%
+timeBefore = timedelta(days = 7)
+searchTime = datetime.today() - timeBefore
+
+# %%
 parameter = {
     'site' : 'stackoverflow',
     'sort' : 'votes',
-    'order' : 'asc',
-    'fromfate' : '2022-12-10',
+    'order' : 'desc',
+    'fromdate' : int(searchTime.timestamp()),
     'tagged' : 'python',
-    'min' : 1
+    'min' : 10
     
     }
 
@@ -22,4 +28,6 @@ try:
 except json.decoder.JSONDecodeError:
     print("Niepoprawny format")
 else:
-    pprint.pprint(questions)
+    for question in questions['items']:
+        webbrowser.open_new_tab(question['link'])
+    
