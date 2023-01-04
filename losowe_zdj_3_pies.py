@@ -4,12 +4,21 @@ import requests
 import json
 import webbrowser
 from enum import IntEnum
-def next_level(howManyPictures):
-    
-    parameter = {
-        "count" : howManyPictures
+
+
+def dogCatBird_func(howManyPictures):
+    """This function open a website with a choosen pets( dogs=Shiba, cats, birds)
+        Input:
+           howManyPictures : int 
         
-        }
+        Output:
+            website
+            
+   """
+   
+    parameter = {
+        "count" : howManyPictures}
+    
     urlDict = {"urlShiba" : "http://shibe.online/api/shibes",
                "urlCats" : "http://shibe.online/api/cats",
                "urlBirds" : "http://shibe.online/api/birds"}
@@ -47,19 +56,20 @@ def next_level(howManyPictures):
 whichAnimalEnum = IntEnum("whichAnimalEnum", "dog cat bird") 
 
 
-animalChoice = int(input(("""Which animal you choose?:
+animalChoice = int(input("""Which animal you choose?:
       1 - Dog
       2 - Cat
-      3 - Bird""")))   #Dog Cat Bird        
+      3 - Bird
+      
+      Place for your decision: """))   #Dog Cat Bird    
+      
       
 howManyPictures =int(input("How many pictures you want to see?: "))
 
 if animalChoice == whichAnimalEnum.dog:
-    next_level(howManyPictures)
+    dogCatBird_func(howManyPictures)
 elif animalChoice == whichAnimalEnum.cat:
-    next_level(howManyPictures)
+    dogCatBird_func(howManyPictures)
 elif animalChoice == whichAnimalEnum.bird:
-    next_level(howManyPictures)
+    dogCatBird_func(howManyPictures)
     
-
-
